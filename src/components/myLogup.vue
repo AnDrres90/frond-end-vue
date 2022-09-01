@@ -10,6 +10,7 @@
             <input type="email" placeholder="email" v-model="user.email" class="form-control mb-3">
             <input type="password" placeholder="password" v-model="user.password" class="form-control mb-3">
             <button class="btn btn-primary">Send</button>
+            <p class="text-center h6 m-3" style="color: #ea5959;">{{msg}}</p>
             <p class="p-3 text-center">I have an account <router-link to="/">Sign in</router-link> </p>
         </form>
     </div>
@@ -23,11 +24,16 @@ import { createUser } from '@/services/UserServices'
 export default defineComponent({
     data() {
         return {
+            msg: '',
             user: {} as Users
         };
     },
     methods: {
         async SaveUser() {
+            await createUser(this.user)
+            .catch(err => {
+                this.msg = err.response.data.message;
+            });
             const res = await createUser(this.user);
             console.log(res);
             this.$router.push({ name: 'login'});
