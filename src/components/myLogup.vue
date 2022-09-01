@@ -30,13 +30,13 @@ export default defineComponent({
     },
     methods: {
         async SaveUser() {
+            this.$router.push('/');
             await createUser(this.user)
             .catch(err => {
                 this.msg = err.response.data.message;
             });
             const res = await createUser(this.user);
             console.log(res);
-            this.$router.push({ name: 'login'});
         }
     }
 });
