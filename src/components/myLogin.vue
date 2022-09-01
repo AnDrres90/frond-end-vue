@@ -42,7 +42,15 @@ export default defineComponent({
             console.log(token)
             axios.defaults.headers.common['Authorization'] = token;
             localStorage.setItem('token', token);
+            if(token){
+                this.$router.push(`/listusers`)
+            }else{
+                this.$router.push(`/`)
+            }
         }
+    },
+    async mounted(){
+        localStorage.removeItem('token');
     }
 });
 </script>

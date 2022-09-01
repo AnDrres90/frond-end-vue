@@ -12,6 +12,11 @@ const routes: RouteRecordRaw[] = [
         name: 'logup',
         component: () => import('@/components/myLogup.vue')
     },
+    {
+        path: '/listusers',
+        name: 'listUsers',
+        component: () => import('@/components/UsersList.vue')
+    },
 ]
 
 const router = createRouter({
