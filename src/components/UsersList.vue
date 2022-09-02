@@ -19,16 +19,16 @@ export default defineComponent({
             users: [] as Users[]
         };
     },
+    async onMounted() {
+        if (!localStorage.getItem('token')) {
+            await this.$router.push('/')
+        }
+    },
     async mounted() {
         if (localStorage.getItem('token')) {
             await this.loadUsers();
         } else {
             await this.$router.push('/');
-        }
-    },
-    onMounted() {
-        if (!localStorage.getItem('token')) {
-            this.$router.push('/')
         }
     },
     methods: {
