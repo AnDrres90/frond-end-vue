@@ -27,6 +27,9 @@ export default defineComponent({
             user: {} as User
         };
     },
+    async mounted(){
+        localStorage.removeItem('token');
+    },
     methods: {
         async FindUser() {
             let json = {
@@ -39,18 +42,14 @@ export default defineComponent({
             }); 
             const res = await signInUser(json)
             const token = res.data.token;
-            console.log(token)
             axios.defaults.headers.common['Authorization'] = token;
             localStorage.setItem('token', token);
             if(token){
-                this.$router.push(`/listusers`)
+                await this.$router.push('/listusers')
             }else{
-                this.$router.push(`/`)
+                await this.$router.push('/')
             }
         }
-    },
-    async mounted(){
-        localStorage.removeItem('token');
     }
 });
 </script>
