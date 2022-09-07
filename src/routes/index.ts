@@ -27,6 +27,11 @@ const routes: RouteRecordRaw[] = [
         name: 'users-details',
         component: () => import('@/components/FormUser.vue')
     },
+    {
+        path: '/userupdate',
+        name: 'users-update',
+        component: () => import('@/components/UpdatedUser.vue')
+    },
 ]
 
 const router = createRouter({

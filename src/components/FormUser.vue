@@ -9,7 +9,7 @@
             <h3 class="text-center p-3 h4"><b>user email: </b> {{currenUser.email}}</h3>
         </div>
         <div class="p-3">
-            <button class="btn btn-success">Updated Profile</button>
+            <button class="btn btn-success" @click.prevent="updatedUser()">Updated Profile</button>
         </div>
     </div>
     <div class="container p-5">
@@ -22,7 +22,7 @@
                     <th>Active</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-light text-dark">
                 <tr v-for="(device, index) in currenDevices" :key="index">
                     <th>{{index + 1}}</th>
                     <th>{{device.ip}}</th>
@@ -37,7 +37,7 @@
 <script lang="ts">
 import { Users } from '@/interfaces/users';
 import { Devices } from '@/interfaces/devices';
-import { getUser, getDevicesUser } from '@/services/UserServices';
+import { getUser, getDevicesUser} from '@/services/UserServices';
 import { defineComponent } from '@vue/runtime-core';
 import myNavBar from '@/components/Navbar.vue';
 
@@ -59,7 +59,9 @@ export default defineComponent({
         async loadDevices() {
             const res = await getDevicesUser();
             this.currenDevices = res.data
-            console.log(res.data);
+        },
+        async updatedUser() {
+            await this.$router.push('/userupdate');
         }
     },
     async mounted() {
@@ -81,10 +83,7 @@ export default defineComponent({
 }
 
 #fond {
-    margin-left: 200px;
-    margin-right: 200px;
-    margin-top: 30px;
-    background-color: #70868f;
-    border-radius: 20px;
+    background-image: url('@/assets/fondo-perfil-1714205.jpg') ;
+    background-size: 1400px;
 }
 </style>

@@ -45,7 +45,7 @@ export default defineComponent({
             axios.defaults.headers.common['Authorization'] = token;
             localStorage.setItem('token', token);
             if(token){
-                await this.$router.push('/listusers')
+                await this.$router.push('/profileuser')
             }
         }
     }

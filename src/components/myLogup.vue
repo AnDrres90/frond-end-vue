@@ -35,8 +35,7 @@ export default defineComponent({
             .catch(err => {
                 this.msg = err.response.data.message;
             });
-            const res = await createUser(this.user);
-            console.log(res);
+            await createUser(this.user);
         }
     }
 });

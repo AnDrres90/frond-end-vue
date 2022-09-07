@@ -8,13 +8,7 @@
                         <router-link class="nav-link" to="/profileuser">User Profile</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/listusers">List users</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/listdevices">List devices</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/">Logout</router-link>
+                        <router-link class="nav-link" to="/">Logout <img src="@/assets/logout.png" alt="logut" id="icono"></router-link>
                     </li>
                 </ul>
             </div>
@@ -29,3 +23,9 @@ export default defineComponent({
     name: 'myNavBar'
 })
 </script>
+
+<style>
+    #icono{
+        width: 20px;
+    }
+</style>
