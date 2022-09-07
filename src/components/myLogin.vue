@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img src="@/assets/fondo.jpg" alt="fondo" class="position-absolute" style="width: 100%; height: 100%;">
+        <img src="@/assets/fond.jpg" alt="fondo" class="position-absolute" style="width: 100%; height: 100%; opacity: 0.4;">
     </div>
     <div class="col-md-4 offset-md-4 container p-5">
         <form @submit.prevent="FindUser()" class="card card-body form-group">
@@ -46,17 +46,8 @@ export default defineComponent({
             localStorage.setItem('token', token);
             if(token){
                 await this.$router.push('/listusers')
-            }else{
-                await this.$router.push('/')
             }
         }
     }
 });
 </script>
-
-<style>
-    #fond{
-        width: 500px;
-        height: 500px;
-    }
-</style>

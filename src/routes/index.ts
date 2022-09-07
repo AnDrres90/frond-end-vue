@@ -17,6 +17,16 @@ const routes: RouteRecordRaw[] = [
         name: 'listUsers',
         component: () => import('@/components/UsersList.vue')
     },
+    {
+        path: '/listdevices',
+        name: 'listDevices',
+        component: () => import('@/components/DevicesList.vue')
+    },
+    {
+        path: '/profileuser',
+        name: 'users-details',
+        component: () => import('@/components/FormUser.vue')
+    },
 ]
 
 const router = createRouter({

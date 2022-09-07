@@ -1,28 +1,49 @@
 <template>
-    <h1>List</h1>
-    <ul class="list-group container p-5">
-        <li class="list-group-item list-group-item-action" style="cursor:pointer" v-for="(user, index) in users"
-            :key="index">
-            {{ index + 1 }}. {{ user.name }} -- {{ user.email }} -- {{ user.lastName }}
-        </li>
-    </ul>
+    <myNavBar/>
+    <div class="container p-5">
+        <form class="d-flex p-4" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Num</th>
+                    <th>Name</th>
+                    <th>last name</th>
+                    <th>email</th>
+                    <th>creation date</th>
+                    <th>update date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(user, index) in users" :key="index">
+                    <th>{{index + 1}}</th>
+                    <th>{{user.name}}</th>
+                    <th>{{user.lastName}}</th>
+                    <th>{{user.email}}</th>
+                    <th>{{user.createdAt}}</th>
+                    <th>{{user.updatedAt}}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </template>
 
 <script lang="ts">
 import { Users } from '@/interfaces/users';
 import { getUsers } from '@/services/UserServices';
 import { defineComponent } from 'vue';
+import myNavBar from '@/components/Navbar.vue'
 
 export default defineComponent({
+    components: {
+        myNavBar
+    },
     data() {
         return {
             users: [] as Users[]
         };
-    },
-    async onMounted() {
-        if (!localStorage.getItem('token')) {
-            await this.$router.push('/')
-        }
     },
     async mounted() {
         if (localStorage.getItem('token')) {
@@ -39,3 +60,9 @@ export default defineComponent({
     }
 });
 </script>
+
+<style>
+    #perfil{
+        width: 30px;
+    }
+</style>
