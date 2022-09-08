@@ -85,6 +85,13 @@ export default defineComponent({
                 this.msgE = 'enter a different email than the current';
             }
         }
+    },
+    async mounted() {
+        if (localStorage.getItem('token')) {
+            await this.$router.push('/userupdate');
+        } else {
+            await this.$router.push('/');
+        }
     }
 });
 </script>
