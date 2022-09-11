@@ -1,3 +1,4 @@
+import { isAdmin } from '@/middlewares/auth.guard';
 import {createRouter , RouteRecordRaw, createWebHistory} from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
@@ -13,13 +14,15 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/components/myLogup.vue')
     },
     {
-        path: '/listusers',
+        path: '/admin/listusers',
         name: 'listUsers',
+        beforeEnter: [isAdmin],
         component: () => import('@/components/UsersList.vue')
     },
     {
-        path: '/listdevices',
+        path: '/admin/listdevices',
         name: 'listDevices',
+        beforeEnter: [isAdmin],
         component: () => import('@/components/DevicesList.vue')
     },
     {
@@ -31,6 +34,11 @@ const routes: RouteRecordRaw[] = [
         path: '/userupdate',
         name: 'users-update',
         component: () => import('@/components/UpdatedUser.vue')
+    },
+    {
+        path: '/forbidden',
+        name: 'forbidden',
+        component: () => import('@/components/ErrorUnathorized.vue')
     },
 ]
 

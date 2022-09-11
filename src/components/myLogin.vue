@@ -18,6 +18,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import VueJwtDecode from 'vue-jwt-decode'
 import { User } from '@/interfaces/users'
 import { signInUser } from '@/services/UserServices'
 import axios from "@/services/axios";
@@ -46,6 +47,9 @@ export default defineComponent({
             const token = res.data.token;
             axios.defaults.headers.common['Authorization'] = token;
             localStorage.setItem('token', token);
+            const tokendecode = VueJwtDecode.decode(token);
+            console.log(tokendecode.role);
+            localStorage.setItem('rol', tokendecode.role);
             if (token) {
                 await this.$router.push('/profileuser')
             }

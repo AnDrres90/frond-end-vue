@@ -7,6 +7,12 @@
                     <li class="nav-item">
                         <router-link class="nav-link" to="/profileuser">User Profile</router-link>
                     </li>
+                    <li class="nav-item" v-if="isAdmin()">
+                        <router-link class="nav-link" to="/admin/listusers">List users</router-link>
+                    </li>
+                    <li class="nav-item" v-if="isAdmin()">
+                        <router-link class="nav-link" to="/admin/listdevices">List users</router-link>
+                    </li>
                     <li class="nav-item">
                         <router-link class="nav-link" to="/">Logout <img src="@/assets/logout.png" alt="logut" id="icono"></router-link>
                     </li>
@@ -20,7 +26,12 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'myNavBar'
+    name: 'myNavBar',
+    methods: {
+        isAdmin(){
+            return localStorage.getItem('rol') == 'admin'
+        }
+    }
 })
 </script>
 

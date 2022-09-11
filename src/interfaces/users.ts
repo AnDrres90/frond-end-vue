@@ -6,6 +6,7 @@ export interface Users {
     _id: string;
     createdAt: string;
     updatedAt: string;
+    role: string;
 }
 
 export interface User {
