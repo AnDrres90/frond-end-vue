@@ -15,7 +15,7 @@
                 <div class="p-2">
                     <input type="text" class="form-control" placeholder="password" v-model="user.password">
                 </div>
-                <button class="btn btn-success m-3">Send</button>
+                <button class="btn btn-success m-3" @click.prevent="updatedUsers()">Send</button>
             </form>
     </div>
 </template>
@@ -39,6 +39,7 @@ export default defineComponent ({
         async updatedUsers() {
             if (typeof this.$route.params.id === "string") {
                 await updatedUsersAdmin(this.$route.params.id, this.user);
+                window.alert('email updated successfully');
                 this.$router.push('/admin/listusers');
             }
         },
@@ -51,10 +52,8 @@ export default defineComponent ({
         if (typeof this.$route.params.id === "string"){
             await this.loadUser(this.$route.params.id);
         }
-        
-        if (localStorage.getItem('token')) {
-            await this.$router.push('/admin/updatedusers/:id');
-        } else {
+
+        if (!localStorage.getItem('token')) {
             await this.$router.push('/');
         }
     }
