@@ -4,16 +4,16 @@
         <form class="p-3 card">
                 <p class="h4 text-center">updated a user</p>
                 <div class="p-2">
-                    <input type="text" class="form-control" placeholder="name" v-model="user.name">
+                    <input type="text" class="form-control" placeholder="name user" v-model="user.name">
                 </div>
                 <div class="p-2">
-                    <input type="text" class="form-control" placeholder="lastname" v-model="user.lastName">
+                    <input type="text" class="form-control" placeholder="lastname user" v-model="user.lastName">
                 </div>
                 <div class="p-2">
                     <input type="text" class="form-control" placeholder="email" v-model="user.email">
                 </div>
                 <div class="p-2">
-                    <input type="text" class="form-control" placeholder="password" v-model="user.password">
+                    <input type="password" class="form-control" placeholder="password" v-model="user.password">
                 </div>
                 <button class="btn btn-success m-3" @click.prevent="updatedUsers()">Send</button>
             </form>
@@ -24,7 +24,7 @@
 import { defineComponent } from 'vue';
 import myNavBar from '@/components/Navbar.vue'
 import { Users } from '@/interfaces/users';
-import {updatedUsersAdmin, getUserAdmin} from '@/services/UserServices';
+import {updatedUsersAdmin} from '@/services/UserServices';
 
 export default defineComponent ({
     components:{
@@ -42,17 +42,9 @@ export default defineComponent ({
                 window.alert('user updated successfully');
                 this.$router.push('/admin/listusers');
             }
-        },
-        async loadUser(id: string) {
-            const res = await getUserAdmin(id);
-            this.user = res.data;
         }
     },
     async mounted() {
-        if (typeof this.$route.params.id === "string"){
-            await this.loadUser(this.$route.params.id);
-        }
-
         if (!localStorage.getItem('token')) {
             await this.$router.push('/');
         }
