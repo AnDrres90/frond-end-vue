@@ -48,14 +48,15 @@ export default defineComponent ({
         }
     },
     async mounted() {
+        if (typeof this.$route.params.id === "string"){
+            await this.loadUser(this.$route.params.id);
+        }
+        
         if (localStorage.getItem('token')) {
             await this.$router.push('/admin/updatedusers/:id');
         } else {
             await this.$router.push('/');
         }
-        
-        if (typeof this.$route.params.id === "string")
-            this.loadUser(this.$route.params.id);
     }
 });
 </script>
