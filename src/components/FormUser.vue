@@ -1,9 +1,6 @@
 <template>
     <myNavBar />
     <div id="fond">
-        <div class="text-center">
-            <img src="@/assets/perfil.png" alt="perfil" id="perfil">
-        </div>
         <div>
             <h2 class="text-center">{{currenUser.name}} {{currenUser.lastName}}</h2>
             <h3 class="text-center p-3 h4"><b>user email: </b> {{currenUser.email}}</h3>
@@ -76,12 +73,6 @@ export default defineComponent({
 </script>
 
 <style>
-#perfil {
-    text-align: center;
-    width: 200px;
-    padding: 20px;
-}
-
 #fond {
     background-image: url('@/assets/fondo-perfil-1714205.jpg') ;
     background-size: 1400px;

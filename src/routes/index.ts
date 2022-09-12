@@ -40,6 +40,18 @@ const routes: RouteRecordRaw[] = [
         name: 'forbidden',
         component: () => import('@/components/ErrorUnathorized.vue')
     },
+    {
+        path: '/admin/updatedusers/:id',
+        name: 'updatedlistUsers',
+        beforeEnter: [isAdmin],
+        component: () => import('@/components/UpdatedListUsers.vue')
+    },
+    {
+        path: '/admin/updateddevices/:id',
+        name: 'updatedlistDevices',
+        beforeEnter: [isAdmin],
+        component: () => import('@/components/UpdatedListDevices.vue')
+    },
 ]
 
 const router = createRouter({

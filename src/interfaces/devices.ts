@@ -1,4 +1,5 @@
 export interface Devices{
+    _id: string;
     ip: string;
     name:string;
     serial:string;

@@ -14,6 +14,8 @@
                     <th>email</th>
                     <th>creation date</th>
                     <th>update date</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +26,8 @@
                     <th>{{user.email}}</th>
                     <th>{{user.createdAt}}</th>
                     <th>{{user.updatedAt}}</th>
+                    <th><button class="btn btn-warning" @click.prevent="this.$router.push(`/admin/updatedusers/${user._id}`)">Updated</button></th>
+                    <th><button class="btn btn-danger">Delete</button></th>
                 </tr>
             </tbody>
         </table>

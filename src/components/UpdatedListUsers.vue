@@ -1,0 +1,61 @@
+<template>
+    <myNavBar/>
+    <div class="container p-5" style="width: 600px;">
+        <form class="p-3 card">
+                <p class="h4 text-center">updated a user</p>
+                <div class="p-2">
+                    <input type="text" class="form-control" placeholder="name" v-model="user.name">
+                </div>
+                <div class="p-2">
+                    <input type="text" class="form-control" placeholder="lastname" v-model="user.lastName">
+                </div>
+                <div class="p-2">
+                    <input type="text" class="form-control" placeholder="email" v-model="user.email">
+                </div>
+                <div class="p-2">
+                    <input type="text" class="form-control" placeholder="password" v-model="user.password">
+                </div>
+                <button class="btn btn-success m-3">Send</button>
+            </form>
+    </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import myNavBar from '@/components/Navbar.vue'
+import { Users } from '@/interfaces/users';
+import {updatedUsersAdmin, getUserAdmin} from '@/services/UserServices';
+
+export default defineComponent ({
+    data(){
+        return {
+            user: {} as Users
+        }
+    },
+    components:{
+        myNavBar
+    },
+    methods:{
+        async updatedUsers() {
+            if (typeof this.$route.params.id === "string") {
+                await updatedUsersAdmin(this.$route.params.id, this.user);
+                this.$router.push('/admin/listusers');
+            }
+        },
+        async loadUser(id: string) {
+            const res = await getUserAdmin(id);
+            this.user = res.data;
+        }
+    },
+    async mounted() {
+        if (localStorage.getItem('token')) {
+            await this.$router.push('/admin/updatedusers/:id');
+        } else {
+            await this.$router.push('/');
+        }
+        
+        if (typeof this.$route.params.id === "string")
+            this.loadUser(this.$route.params.id);
+    }
+});
+</script>

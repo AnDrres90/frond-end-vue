@@ -11,7 +11,7 @@
                         <router-link class="nav-link" to="/admin/listusers">List users</router-link>
                     </li>
                     <li class="nav-item" v-if="isAdmin()">
-                        <router-link class="nav-link" to="/admin/listdevices">List users</router-link>
+                        <router-link class="nav-link" to="/admin/listdevices">List devices</router-link>
                     </li>
                     <li class="nav-item">
                         <router-link class="nav-link" to="/">Logout <img src="@/assets/logout.png" alt="logut" id="icono"></router-link>

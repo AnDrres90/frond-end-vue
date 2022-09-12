@@ -15,6 +15,8 @@
                     <th>Propietary ID</th>
                     <th>creation date</th>
                     <th>update date</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +28,8 @@
                     <th>{{device.propietaryId}}</th>
                     <th>{{device.createdAt}}</th>
                     <th>{{device.updatedAt}}</th>
+                    <th><button class="btn btn-warning" @click.prevent="this.$router.push(`/admin/updateddevices/${device._id}`)">Updated</button></th>
+                    <th><button class="btn btn-danger">Delete</button></th>
                 </tr>
             </tbody>
         </table>
