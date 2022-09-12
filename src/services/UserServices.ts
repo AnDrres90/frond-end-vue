@@ -20,3 +20,7 @@ export const updatedUser = async (user: Users) => await axios.patch('/user/updat
 export const updatedUsersAdmin = async (id: string, user: Users) => await axios.patch('/admin/updated/' + id, user);
 
 export const getUserAdmin = async (id: string): Promise<AxiosResponse<Users>> => await axios.get('/admin/user/' + id);
+
+export const updatedDevicesAdmin = async (id: string, device: Devices) => await axios.patch('/device/updated/' + id, device);
+
+export const getDevicesAdmin = async (id: string): Promise<AxiosResponse<Devices>> => await axios.get('/api/device/' + id);

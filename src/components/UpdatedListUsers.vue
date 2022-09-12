@@ -27,19 +27,19 @@ import { Users } from '@/interfaces/users';
 import {updatedUsersAdmin, getUserAdmin} from '@/services/UserServices';
 
 export default defineComponent ({
+    components:{
+        myNavBar
+    },
     data(){
         return {
             user: {} as Users
         }
     },
-    components:{
-        myNavBar
-    },
     methods:{
         async updatedUsers() {
             if (typeof this.$route.params.id === "string") {
                 await updatedUsersAdmin(this.$route.params.id, this.user);
-                window.alert('email updated successfully');
+                window.alert('user updated successfully');
                 this.$router.push('/admin/listusers');
             }
         },
