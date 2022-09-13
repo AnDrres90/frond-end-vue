@@ -56,7 +56,7 @@ const routes: RouteRecordRaw[] = [
         path: '/devicesadd',
         name: 'createDevices',
         component: () => import('@/components/AddDevice.vue')
-    },
+    }
 ]
 
 const router = createRouter({

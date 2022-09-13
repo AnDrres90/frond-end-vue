@@ -7,10 +7,10 @@
                     <li class="nav-item">
                         <router-link class="nav-link" to="/profileuser">User Profile</router-link>
                     </li>
-                    <li class="nav-item" v-if="isAdmin() || isSuperAdmin()">
+                    <li class="nav-item" v-if="isAdmin()">
                         <router-link class="nav-link" to="/admin/listusers">List users</router-link>
                     </li>
-                    <li class="nav-item" v-if="isAdmin() || isSuperAdmin()">
+                    <li class="nav-item" v-if="isAdmin()">
                         <router-link class="nav-link" to="/admin/listdevices">List devices</router-link>
                     </li>
                     <li class="nav-item">
@@ -30,9 +30,6 @@ export default defineComponent({
     methods: {
         isAdmin(){
             return localStorage.getItem('rol') == 'admin'
-        },
-        isSuperAdmin(){
-            return localStorage.getItem('rol') == 'super-admin'
         }
     }
 })
