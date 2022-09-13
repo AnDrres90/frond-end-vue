@@ -1,5 +1,6 @@
 <template>
     <myNavBar/>
+    <h1 class="text-center h1 p-2">LIST USERS</h1>
     <div class="container p-5">
         <form class="d-flex p-4" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -8,12 +9,13 @@
         <table class="table table-bordered">
             <thead class="table-dark">
                 <tr>
-                    <th>Num</th>
+                    <th>num</th>
                     <th>Name</th>
                     <th>last name</th>
                     <th>email</th>
                     <th>creation date</th>
                     <th>update date</th>
+                    <th>role</th>
                     <th></th>   
                 </tr>
             </thead>
@@ -25,6 +27,7 @@
                     <th>{{user.email}}</th>
                     <th>{{user.createdAt}}</th>
                     <th>{{user.updatedAt}}</th>
+                    <th>{{user.role}}</th>
                     <th><button class="btn btn-warning" @click.prevent="this.$router.push(`/admin/updatedusers/${user._id}`)">Updated</button></th>
                 </tr>
             </tbody>
@@ -65,6 +68,6 @@ export default defineComponent({
 
 <style>
     #perfil{
-        width: 30px;
+        width: 80px;
     }
 </style>

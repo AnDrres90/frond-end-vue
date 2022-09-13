@@ -3,6 +3,7 @@
     <div class="container p-5" style="width: 600px;">
         <form class="p-3 card">
                 <p class="h4 text-center">updated a Device</p>
+                <span class="text-center"><img src="@/assets/ordenador-personal.png" alt="ordenador" id="ordenadorimg"></span>
                 <div class="p-2">
                     <input type="text" class="form-control" placeholder="ip" v-model="device.ip">
                 </div>
@@ -61,3 +62,9 @@ export default defineComponent ({
     }
 });
 </script>
+
+<style>
+    #ordenadorimg{
+        width: 70px;
+    }
+</style>

@@ -1,8 +1,9 @@
 <template>
     <myNavBar/>
-    <div class="container p-5" style="width: 600px;">
+    <div class="container p-3" style="width: 600px;">
         <form class="p-3 card">
                 <p class="h4 text-center">updated a user</p>
+                <span class="text-center"><img src="@/assets/programador.png" alt="programador" id="programadorimg"></span>
                 <div class="p-2">
                     <input type="text" class="form-control" placeholder="name user" v-model="user.name">
                 </div>
@@ -13,7 +14,10 @@
                     <input type="text" class="form-control" placeholder="email" v-model="user.email">
                 </div>
                 <div class="p-2">
-                    <input type="password" class="form-control" placeholder="password" v-model="user.password">
+                    <input type="text" class="form-control" placeholder="password" v-model="user.password">
+                </div>
+                <div class="p-2">
+                    <input type="text" class="form-control" placeholder="role" v-model="user.role">
                 </div>
                 <button class="btn btn-success m-3" @click.prevent="updatedUsers()">Send</button>
             </form>
@@ -61,3 +65,9 @@ export default defineComponent ({
     }
 });
 </script>
+
+<style>
+    #programadorimg{
+        width: 70px;
+    }
+</style>

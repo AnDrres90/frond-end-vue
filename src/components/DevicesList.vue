@@ -1,5 +1,6 @@
 <template>
     <myNavBar/>
+    <h1 class="text-center h1 p-2">LIST DEVICES</h1>
     <div class="container p-5">
         <form class="d-flex p-4" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
