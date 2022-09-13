@@ -17,6 +17,9 @@
                 </div>
                 <button class="btn btn-success m-3" @click.prevent="updatedUsers()">Send</button>
             </form>
+            <div class="p-2 text-center">
+                <button class="btn btn-danger" @click="UserDelete()">delete user</button>
+            </div>
     </div>
 </template>
 
@@ -24,7 +27,7 @@
 import { defineComponent } from 'vue';
 import myNavBar from '@/components/Navbar.vue'
 import { Users } from '@/interfaces/users';
-import {updatedUsersAdmin} from '@/services/UserServices';
+import {updatedUsersAdmin, delUser} from '@/services/UserServices';
 
 export default defineComponent ({
     components:{
@@ -40,6 +43,13 @@ export default defineComponent ({
             if (typeof this.$route.params.id === "string") {
                 await updatedUsersAdmin(this.$route.params.id, this.user);
                 window.alert('user updated successfully');
+                this.$router.push('/admin/listusers');
+            }
+        },
+        async UserDelete() {
+            if (typeof this.$route.params.id === "string") {
+                await delUser(this.$route.params.id);
+                window.alert('user delete successfully');
                 this.$router.push('/admin/listusers');
             }
         }

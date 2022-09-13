@@ -24,3 +24,7 @@ export const getUserAdmin = async (id: string): Promise<AxiosResponse<Users>> =>
 export const updatedDevicesAdmin = async (id: string, device: Devices) => await axios.patch('/device/updated/' + id, device);
 
 export const getDevicesAdmin = async (id: string): Promise<AxiosResponse<Devices>> => await axios.get('/device/' + id);
+
+export const delUser = async (id: string): Promise<AxiosResponse<Users>> => await axios.delete('/user/' + id);
+
+export const delDevice = async (id: string): Promise<AxiosResponse<Users>> => await axios.delete('/device/' + id);
