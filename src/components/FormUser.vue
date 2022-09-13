@@ -9,12 +9,16 @@
             <button class="btn btn-success" @click.prevent="updatedUser()">Updated Profile</button>
         </div>
     </div>
+    <div class="p-2 pt-5 pe-3" style="float:right">
+        <button class="btn btn-primary" @click.prevent="addDevice()">add device <img src="@/assets/pc.png" alt="pc" id="pcimg"></button>
+    </div>
     <div class="container p-5">
         <table class="table table-bordered">
             <thead class="table-primary">
                 <tr>
                     <th>Num</th>
                     <th>IP</th>
+                    <th>Name</th>
                     <th>Serial</th>
                     <th>Active</th>
                 </tr>
@@ -23,6 +27,7 @@
                 <tr v-for="(device, index) in currenDevices" :key="index">
                     <th>{{index + 1}}</th>
                     <th>{{device.ip}}</th>
+                    <th>{{device.name}}</th>
                     <th>{{device.serial}}</th>
                     <th>{{device.active}}</th>
                 </tr>
@@ -59,6 +64,9 @@ export default defineComponent({
         },
         async updatedUser() {
             await this.$router.push('/userupdate');
+        },
+        async addDevice() {
+            await this.$router.push('/devicesadd');
         }
     },
     async mounted() {
@@ -76,5 +84,8 @@ export default defineComponent({
 #fond {
     background-image: url('@/assets/fondo-perfil-1714205.jpg') ;
     background-size: 1400px;
+}
+#pcimg{
+    width: 20px;
 }
 </style>

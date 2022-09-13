@@ -28,3 +28,5 @@ export const getDevicesAdmin = async (id: string): Promise<AxiosResponse<Devices
 export const delUser = async (id: string): Promise<AxiosResponse<Users>> => await axios.delete('/user/' + id);
 
 export const delDevice = async (id: string): Promise<AxiosResponse<Users>> => await axios.delete('/device/' + id);
+
+export const createDevice = async (device: Devices) => await axios.post('/device/create', device);

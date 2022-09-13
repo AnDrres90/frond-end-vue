@@ -1,5 +1,5 @@
 import { isAdmin } from '@/middlewares/auth.guard';
-import {createRouter , RouteRecordRaw, createWebHistory} from 'vue-router';
+import { createRouter, RouteRecordRaw, createWebHistory } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
     {
@@ -51,6 +51,11 @@ const routes: RouteRecordRaw[] = [
         name: 'updatedlistDevices',
         beforeEnter: [isAdmin],
         component: () => import('@/components/UpdatedListDevices.vue')
+    },
+    {
+        path: '/devicesadd',
+        name: 'createDevices',
+        component: () => import('@/components/AddDevice.vue')
     },
 ]
 

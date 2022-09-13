@@ -10,6 +10,7 @@
                 <tr>
                     <th>Num</th>
                     <th>IP</th>
+                    <th>Name</th>
                     <th>Serial</th>
                     <th>Active</th>
                     <th>Propietary ID</th>
@@ -22,6 +23,7 @@
                 <tr v-for="(device, index) in devices" :key="index">
                     <th>{{index + 1}}</th>
                     <th>{{device.ip}}</th>
+                    <th>{{device.name}}</th>
                     <th>{{device.serial}}</th>
                     <th>{{device.active}}</th>
                     <th>{{device.propietaryId}}</th>
