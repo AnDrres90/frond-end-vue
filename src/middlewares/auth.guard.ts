@@ -3,3 +3,9 @@ export function isAdmin(){
         return '/forbidden'
     }
 }
+
+export function isSuperAdmin(){
+    if(localStorage.getItem('rol') != 'super-admin'){
+        return '/forbidden'
+    }
+}

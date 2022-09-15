@@ -10,7 +10,7 @@
             <input type="password" placeholder="password" v-model="user.password" class="form-control mb-3">
             <button class="btn btn-primary">Send</button>
             <p class="text-center h6 m-3" style="color: #ea5959;">{{msg}}</p>
-            <p class="p-3 text-center">Don't have an account <router-link to="/logup">Sign up</router-link>
+            <p class="p-3 text-center text-muted">Don't have an account <router-link to="/logup">Sign up</router-link>
             </p>
         </form>
     </div>

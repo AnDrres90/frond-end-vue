@@ -1,8 +1,8 @@
 <template>
     <myNavBar/>
     <div id="fond">
-        <h1 class="text-center h1 p-5">LIST USERS</h1>    
-    </div>
+        <h1 class="text-center h1 p-5">LIST USERS</h1>
+    </div>  
     <div class="container p-5">
         <form class="d-flex p-4" role="search">
             <input class="form-control me-2" v-model="search" type="search" placeholder="Search... name lastname" aria-label="Search">
@@ -16,10 +16,11 @@
                     <th>email</th>
                     <th>creation date</th>
                     <th>update date</th>
+                    <th>role</th>
                     <th></th>   
                 </tr>
             </thead>
-            <tbody class="table-light text-dark">
+            <tbody class="text-dark table-light">
                 <tr v-for="(user, index) in filterList()" :key="index">
                     <th>{{index + 1}}</th>
                     <th>{{user.name}}</th>
@@ -27,7 +28,8 @@
                     <th>{{user.email}}</th>
                     <th>{{user.createdAt}}</th>
                     <th>{{user.updatedAt}}</th>
-                    <th><button class="btn btn-warning" @click.prevent="this.$router.push(`/admin/updatedusers/${user._id}`)">Updated</button></th>
+                    <th>{{user.role}}</th>
+                    <th><button class="btn btn-warning" @click.prevent="this.$router.push(`/superadmin/updatedusers/${user._id}`)">Updated</button></th>
                 </tr>
             </tbody>
         </table>

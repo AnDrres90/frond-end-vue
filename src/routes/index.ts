@@ -1,4 +1,4 @@
-import { isAdmin } from '@/middlewares/auth.guard';
+import { isAdmin, isSuperAdmin } from '@/middlewares/auth.guard';
 import { createRouter, RouteRecordRaw, createWebHistory } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
@@ -56,6 +56,18 @@ const routes: RouteRecordRaw[] = [
         path: '/devicesadd',
         name: 'createDevices',
         component: () => import('@/components/AddDevice.vue')
+    },
+    {
+        path: '/superadmin/listusers',
+        name: 'islistusers',
+        beforeEnter: [isSuperAdmin],
+        component: () => import('@/components/UserSuperAdmin.vue')
+    },
+    {
+        path: '/superadmin/updatedusers/:id',
+        name: 'isupdatedtusers',
+        beforeEnter: [isSuperAdmin],
+        component: () => import('@/components/UpdatedUserSuperAdmin.vue')
     }
 ]
 

@@ -1,13 +1,14 @@
 <template>
     <myNavBar/>
-    <h1 class="text-center h1 p-2">LIST DEVICES</h1>
+    <div id="fond">
+        <h1 class="text-center h1 p-5">LIST DEVICES</h1>
+    </div>
     <div class="container p-5">
         <form class="d-flex p-4" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <input class="form-control me-2" v-model="search" type="search" placeholder="Search... name serial" aria-label="Search">
         </form>
         <table class="table table-bordered">
-            <thead class="table-dark">
+            <thead class="table-primary">
                 <tr>
                     <th>Num</th>
                     <th>IP</th>
@@ -20,8 +21,8 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr v-for="(device, index) in devices" :key="index">
+            <tbody class="table-light text-dark">
+                <tr v-for="(device, index) in filterList()" :key="index">
                     <th>{{index + 1}}</th>
                     <th>{{device.ip}}</th>
                     <th>{{device.name}}</th>
@@ -49,6 +50,7 @@ export default defineComponent({
     },
     data() {
         return {
+            search: '',
             devices: [] as Devices[]
         };
     },
@@ -63,7 +65,22 @@ export default defineComponent({
         async loadDevices() {
             const res = await getDevices();
             this.devices = res.data;
+        },
+        filterList(){
+            return this.devices.filter(device => {
+                if(this.search)
+                    return device.name.toLowerCase().includes(this.search.toLowerCase()) || device.serial.toLowerCase().includes(this.search.toLowerCase());
+                else
+                    return true;
+            })
         }
     }
 });
 </script>
+
+<style>
+#fond {
+background-image: url('@/assets/fondo-perfil-1714205.jpg') ;
+background-size: 1400px;
+}
+</style>

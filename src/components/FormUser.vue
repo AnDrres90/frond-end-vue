@@ -2,17 +2,20 @@
     <myNavBar />
     <div id="fond">
         <div>
+            <div class="text-center" v-if="isSuperAdmin()"><img src="@/assets/perfilRoot.png" alt="root" class="perfil"></div>
+            <div class="text-center" v-if="isAdmin()"><img src="@/assets/apoyo.png" alt="root" class="perfil"></div>
+            <div class="text-center p-1" v-if="isUser()"><img src="@/assets/perfil.png" alt="root" class="perfil"></div>
             <h2 class="text-center">{{currenUser.name}} {{currenUser.lastName}}</h2>
             <h3 class="text-center p-3 h4"><b>user email: </b> {{currenUser.email}}</h3>
         </div>
         <div class="p-3">
-            <button class="btn btn-success" @click.prevent="updatedUser()">Updated Profile</button>
+            <button class="btn btn-success" @click.prevent="updatedUser()" v-if="isnotSuperAdmin()">Updated Profile</button>
         </div>
     </div>
-    <div class="p-2 pt-5 pe-3" style="float:right">
+    <div class="p-2 pt-5 pe-3" style="float:right" v-if="isnotSuperAdmin()">
         <button class="btn btn-primary" @click.prevent="addDevice()">add device <img src="@/assets/pc.png" alt="pc" id="pcimg"></button>
     </div>
-    <div class="container p-5">
+    <div class="container p-5" v-if="isnotSuperAdmin()">
         <table class="table table-bordered">
             <thead class="table-primary">
                 <tr>
@@ -33,6 +36,11 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div v-if="isSuperAdmin()" class="text-center p-5" id="infotext">
+        <h1 class="p-3 h3">you are the super admin</h1>
+        <p>you can modified info of the users and can modified roles of users is your tool additionally <br>
+        in the page next is tha list where you can updated users and their roles</p>
     </div>
 </template>
 
@@ -67,6 +75,18 @@ export default defineComponent({
         },
         async addDevice() {
             await this.$router.push('/devicesadd');
+        },
+        isnotSuperAdmin(){
+            return localStorage.getItem('rol') !== 'super-admin'
+        },
+        isSuperAdmin(){
+            return localStorage.getItem('rol') === 'super-admin'
+        },
+        isAdmin(){
+            return localStorage.getItem('rol') === 'admin'
+        },
+        isUser(){
+            return localStorage.getItem('rol') === 'user'
         }
     },
     async mounted() {
@@ -87,5 +107,11 @@ export default defineComponent({
 }
 #pcimg{
     width: 20px;
+}
+.perfil{
+    width: 70px;
+}
+#infotext{
+    font-family: Arial, Helvetica, sans-serif;
 }
 </style>

@@ -13,6 +13,9 @@
                     <li class="nav-item" v-if="isAdmin()">
                         <router-link class="nav-link" to="/admin/listdevices">List devices</router-link>
                     </li>
+                    <li class="nav-item" v-if="isSuperAdmin()">
+                        <router-link class="nav-link" to="/superadmin/listusers">List users</router-link>
+                    </li>
                     <li class="nav-item">
                         <router-link class="nav-link" to="/">Logout <img src="@/assets/logout.png" alt="logut" id="icono"></router-link>
                     </li>
@@ -30,6 +33,9 @@ export default defineComponent({
     methods: {
         isAdmin(){
             return localStorage.getItem('rol') == 'admin'
+        },
+        isSuperAdmin(){
+            return localStorage.getItem('rol') == 'super-admin'
         }
     }
 })

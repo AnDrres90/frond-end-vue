@@ -1,26 +1,28 @@
 <template>
     <myNavBar/>
-    <div class="container p-5" style="width: 600px;">
-        <form class="p-3 card">
-                <p class="h4 text-center">updated a Device</p>
-                <span class="text-center"><img src="@/assets/ordenador-personal.png" alt="ordenador" id="ordenadorimg"></span>
-                <div class="p-2">
-                    <input type="text" class="form-control" placeholder="ip" v-model="device.ip">
+    <div id="fondoUp">
+        <div class="container p-4" style="width: 500px;">
+            <form class="p-3 card">
+                    <p class="h4 text-center">updated a Device</p>
+                    <span class="text-center"><img src="@/assets/ordenador-personal.png" alt="ordenador" id="ordenadorimg"></span>
+                    <div class="p-2">
+                        <input type="text" class="form-control" placeholder="ip" v-model="device.ip">
+                    </div>
+                    <div class="p-2">
+                        <input type="text" class="form-control" placeholder="name device" v-model="device.name">
+                    </div>
+                    <div class="p-2">
+                        <input type="text" class="form-control" placeholder="serial" v-model="device.serial">
+                    </div>
+                    <div class="p-2">
+                        <input type="text" class="form-control" placeholder="active" v-model="device.active">
+                    </div>
+                    <button class="btn btn-success m-3" @click.prevent="updatedDevices()">Send</button>
+                </form>
+                <div class="p-2 text-center">
+                    <button class="btn btn-danger" @click="DeviceDelete()">delete device</button>
                 </div>
-                <div class="p-2">
-                    <input type="text" class="form-control" placeholder="name device" v-model="device.name">
-                </div>
-                <div class="p-2">
-                    <input type="text" class="form-control" placeholder="serial" v-model="device.serial">
-                </div>
-                <div class="p-2">
-                    <input type="text" class="form-control" placeholder="active" v-model="device.active">
-                </div>
-                <button class="btn btn-success m-3" @click.prevent="updatedDevices()">Send</button>
-            </form>
-            <div class="p-2 text-center">
-                <button class="btn btn-danger" @click="DeviceDelete()">delete user</button>
-            </div>
+        </div>
     </div>
 </template>
 
@@ -64,7 +66,15 @@ export default defineComponent ({
 </script>
 
 <style>
-    #ordenadorimg{
-        width: 70px;
-    }
+#ordenadorimg{
+    width: 70px;
+}
+#fondoUp {
+    background-image: url('@/assets/updatedfondo.jpg');
+    background-size: 1400px;    
+    position: absolute;
+    opacity: 0.8;
+    width: 100%;
+    height: 100%;
+}
 </style>
